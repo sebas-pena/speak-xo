@@ -1,0 +1,22 @@
+:root{
+    --dark-gray: #403F40;
+    --gray :#848384;
+    --light-gray: #C6C3C6;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+input:focus{
+    outline: none;
+}
