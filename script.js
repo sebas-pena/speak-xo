@@ -15,10 +15,13 @@ voiceOptionsCtn.addEventListener("change", (e) => {
 let pitch
 pitchInput.addEventListener("change", (e) => {
 	pitch = e.target.value
+	console.log(pitch)
+	console.log(rate)
 })
 let rate
 rateInput.addEventListener("change", (e) => {
 	rate = e.target.value
+	console.log(rate)
 })
 
 const getVoices = () => {
@@ -39,10 +42,12 @@ textForm.addEventListener("submit", (e) => {
 	if (synth.speaking) return
 	e.preventDefault()
 	const text = textInput.value
+
 	const utterance = new SpeechSynthesisUtterance(text)
 	utterance.voice = voices[voiceSelected] || voices[0]
 	utterance.pitch = pitch || 1
 	utterance.rate = rate || 1
+
 	synth.speak(utterance)
 	textInput.value = ""
 
