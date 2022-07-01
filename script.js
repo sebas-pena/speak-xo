@@ -1,10 +1,13 @@
-const eyes = document.querySelectorAll(".eye > div")
+const synth = window.speechSynthesis
 
-const position = eyes[0].getBoundingClientRect()
-document.addEventListener("mousemove", (e) => {
-  const x = e.clientX
-  const y = e.clientY
-  console.clear()
-  console.log(position)
-  console.log("x", x, "y", y)
-})
+let voices = []
+
+const getVoices = () => {
+  voices = synth.getVoices()
+  console.log(voices)
+}
+
+getVoices()
+if (synth.onvoiceschanged !== undefined) {
+  synth.onvoiceschanged = getVoices
+}
