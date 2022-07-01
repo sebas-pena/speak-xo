@@ -4,20 +4,24 @@
     align-items: center;
     justify-content: center;
     flex-grow: 1;
-    gap: 40px;
-    padding: 40px;
+    padding-top: 40px;
+    gap: 20px;
     background-color: var(--gray);
 }
 .eyes{
+    flex: 1;
     display: flex;
-    gap: 80px;
-    justify-content: center;
+    justify-content:space-between;
+    width: 100%;
+    max-width: 500px;
 }
 .eye{
+    flex-grow:  1;
     display: grid;
     place-content: center;
-    width: 200px;
-    height: 200px;
+    max-width: 200px;
+    max-height: 200px;
+    aspect-ratio: 1/1;
     border-radius: 99999999px;
     border: 5px solid #000;
     background-color: #fff;
@@ -31,6 +35,18 @@
 
 #mouth{
     flex-grow: 1;
+    width: calc(100% - 80px);
     max-width: 500px;
     height: 150px;
 }
+
+
+@media only screen and (max-width: 600px){
+    .eyes{
+        justify-content: space-evenly;
+    }
+    .eye{
+        max-width: 170px;
+        max-height: 170px;
+    }
+ }
