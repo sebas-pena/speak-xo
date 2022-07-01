@@ -7,18 +7,30 @@ const middleY = canvas.height / 2
 ctx.lineWidth = 3
 ctx.strokeStyle = "black"
 
-const moveMouth = () => {
-  setInterval(() => {
-    const x = Math.random() * 40
-    const y = Math.random() * 30
-    ctx.clearRect(0, 0, canvasWidth, canvasHeight)
-    ctx.beginPath()
-    ctx.moveTo(0, middleY)
-    ctx.quadraticCurveTo(middleX - x, middleY - y, canvasWidth, middleY)
-    ctx.moveTo(0, middleY)
-    ctx.quadraticCurveTo(middleX - x, middleY + y, canvasWidth, middleY)
-    ctx.stroke()
-  }, 60)
+const drawSimpleMouth = () => {
+	ctx.clearRect(0, 0, canvasWidth, canvasHeight)
+	ctx.beginPath()
+	ctx.moveTo(0, middleY)
+	ctx.lineTo(canvasWidth, middleY)
+	ctx.stroke()
 }
 
-moveMouth()
+drawSimpleMouth()
+
+const moveMouth = () => {
+	const interval = setInterval(() => {
+		const x = Math.random() * 40
+		const y = Math.random() * 30
+		ctx.clearRect(0, 0, canvasWidth, canvasHeight)
+		ctx.beginPath()
+		ctx.moveTo(0, middleY)
+		ctx.quadraticCurveTo(middleX - x, middleY - y, canvasWidth, middleY)
+		ctx.moveTo(0, middleY)
+		ctx.quadraticCurveTo(middleX - x, middleY + y, canvasWidth, middleY)
+		ctx.stroke()
+	}, 60)
+	return () => {
+		drawSimpleMouth()
+		clearInterval(interval)
+	}
+}
